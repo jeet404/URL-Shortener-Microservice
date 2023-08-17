@@ -14,8 +14,7 @@ app.get("/", function (req, res) {
   res.sendFile(process.cwd() + "/views/index.html");
 });
 
-// This code is written by jeet404
-
+1.function to manage local file storage (File data.json)
 function dataManagement(action, input) {
   let filePath = "./public/data.json";
   //check if file exist -> create new file if not exist
