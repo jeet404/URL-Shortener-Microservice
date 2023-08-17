@@ -7,13 +7,14 @@ const dns = require("dns");
 const bodyParser = require("body-parser");
 const mongodb = require("mongodb");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // set up an express app
 const app = express();
 
 // mount the body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(cors());
 // render the stylesheet as found in the public folder
 app.use(express.static(`${__dirname}/public`));
 
