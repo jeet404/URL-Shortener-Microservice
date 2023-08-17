@@ -51,6 +51,15 @@ app.post("/api/shorturl", async (req, res) => {
   try {
     const urlRequest = req.body.url;
 
+    const urlPattern =
+      /^(http|https):\/\/www\.[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}(\/\S*)?$/;
+    if (!urlPattern.test(urlRequest)) {
+      res.json({
+        error: "invalid url",
+      });
+      return;
+    }
+
     const hostname = urlRequest
       .replace(/http[s]?\:\/\//, "")
       .replace(/\/(.+)?/, "");
