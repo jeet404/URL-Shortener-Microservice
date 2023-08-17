@@ -88,20 +88,17 @@ function gen_shorturl() {
 //3.middleware to handle user url input
 app.post("/api/shorturl", (req, res) => {
   //Create variable needs
-  let input = "",
-    domain = "",
-    param = "",
-    short = 0;
+  (domain = ""), (param = ""), (short = 0);
 
   //Post url from user input
-  input = req.body.url;
-  if (input === null || input === "") {
+  const { url } = req.body;
+  if (url === null || url === "") {
     return res.json({ error: "invalid url" });
   }
 
   //matches a string with regular expr => return array
   //url should contains : http:// or https://
-  domain = input.match(
+  domain = url.match(
     /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/gim
   );
   //search a string with regular expr, and replace the string -> delete https://
